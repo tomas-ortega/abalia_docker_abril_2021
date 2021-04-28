@@ -140,5 +140,59 @@ CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS         POR
 
 
 5.2.9
+docker@docker-master abalia_docker_abril_2021]$ docker kill tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED          STATUS                        PORTS     NAMES
+6d937554d8c3   tomcat               "catalina.sh run"   11 minutes ago   Exited (137) 15 seconds ago             tomcat
+0df28b6ba03f   7e0aa2d69a15         "/bin/bash"         58 minutes ago   Exited (0) 51 minutes ago               lucid_jepsen
+ae0147c48c05   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago                 quirky_wilson
+6e6df5eac2e5   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago                 intelligent_kare
+e79b4c0381d6   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago                 quirky_khorana
+771c1acf224c   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago                 determined_heisenberg
+28cdbe208a27   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago                 quirky_ellis
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+
+5.2.10
+[docker@docker-master abalia_docker_abril_2021]$ docker rm tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND       CREATED          STATUS                      PORTS     NAMES
+0df28b6ba03f   7e0aa2d69a15         "/bin/bash"   59 minutes ago   Exited (0) 52 minutes ago             lucid_jepsen
+ae0147c48c05   hello-world:latest   "/hello"      23 hours ago     Exited (0) 23 hours ago               quirky_wilson
+6e6df5eac2e5   hello-world:latest   "/hello"      23 hours ago     Exited (0) 23 hours ago               intelligent_kare
+e79b4c0381d6   hello-world          "/hello"      24 hours ago     Exited (0) 24 hours ago               quirky_khorana
+771c1acf224c   hello-world          "/hello"      24 hours ago     Exited (0) 24 hours ago               determined_heisenberg
+28cdbe208a27   hello-world          "/hello"      24 hours ago     Exited (0) 24 hours ago               quirky_ellis
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+
+5.2.11
+docker@docker-master abalia_docker_abril_2021]$ docker create tomcat
+ea3dbfc0f9f400ff12b4ddc3b7250d5760dc4511370f5ae0f17d2afb3a717089
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED             STATUS                      PORTS     NAMES
+ea3dbfc0f9f4   tomcat               "catalina.sh run"   7 seconds ago       Created                               flamboyant_khayyam
+0df28b6ba03f   7e0aa2d69a15         "/bin/bash"         About an hour ago   Exited (0) 53 minutes ago             lucid_jepsen
+ae0147c48c05   hello-world:latest   "/hello"            23 hours ago        Exited (0) 23 hours ago               quirky_wilson
+6e6df5eac2e5   hello-world:latest   "/hello"            23 hours ago        Exited (0) 23 hours ago               intelligent_kare
+e79b4c0381d6   hello-world          "/hello"            24 hours ago        Exited (0) 24 hours ago               quirky_khorana
+771c1acf224c   hello-world          "/hello"            24 hours ago        Exited (0) 24 hours ago               determined_heisenberg
+28cdbe208a27   hello-world          "/hello"            24 hours ago        Exited (0) 24 hours ago               quirky_ellis
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+5.2.12
+[docker@docker-master abalia_docker_abril_2021]$ docker run --name=tomcat -d --rm tomcat
+3141b52226da27eb9d47ed1d03b095a92a56976339f0e365e526e286a6c6292a
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+
+5.2.13
+[docker@docker-master abalia_docker_abril_2021]$ docker rm -f tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ 
 
 
