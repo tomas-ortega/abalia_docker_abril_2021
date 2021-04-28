@@ -1,0 +1,167 @@
+5.2.1
+
+Se carga una imagen "tomcat":
+[docker@docker-master abalia_docker_abril_2021]$ docker system df
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          2         2         72.72MB   0B (0%)
+Containers      5         0         0B        0B
+Local Volumes   0         0         0B        0B
+Build Cache     0         0         0B        0B
+[docker@docker-master abalia_docker_abril_2021]$ doker images
+bash: doker: command not found...
+[docker@docker-master abalia_docker_abril_2021]$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED       SIZE
+pako          1.0.4     7e0aa2d69a15   4 days ago    72.7MB
+ubuntu        latest    7e0aa2d69a15   4 days ago    72.7MB
+hello-world   latest    d1165f221234   7 weeks ago   13.3kB
+[docker@docker-master abalia_docker_abril_2021]$ docker run --name=tomcat -d tomcat
+Unable to find image 'tomcat:latest' locally
+latest: Pulling from library/tomcat
+bd8f6a7501cc: Pull complete 
+44718e6d535d: Pull complete 
+efe9738af0cb: Pull complete 
+f37aabde37b8: Pull complete 
+b87fc504233c: Pull complete 
+8bf93eef8c9e: Pull complete 
+8d33b4df10ef: Pull complete 
+2d77aa1a5442: Pull complete 
+baa04cc4071d: Pull complete 
+a3a752513415: Pull complete 
+Digest: sha256:0509684774ac53d8b152f4a50dd92889218a8633c0feddb4b35d092e55cd215d
+Status: Downloaded newer image for tomcat:latest
+f5b407266e94eb83525db55aba5bcec8c5f51f618c90282aad2e130a97968722
+
+
+5.2.2
+
+[docker@docker-master abalia_docker_abril_2021]$  docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED              STATUS              PORTS      NAMES
+f5b407266e94   tomcat    "catalina.sh run"   About a minute ago   Up About a minute   8080/tcp   tomcat
+
+[docker@docker-master abalia_docker_abril_2021]$ docker ps
+CONTAINER ID   IMAGE     COMMAND             CREATED              STATUS              PORTS      NAMES
+f5b407266e94   tomcat    "catalina.sh run"   About a minute ago   Up About a minute   8080/tcp   tomcat
+
+
+5.2.3
+[docker@docker-master abalia_docker_abril_2021]$ docker stop tomcat
+tomcat
+
+
+5.2.4
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED          STATUS                        PORTS     NAMES
+f5b407266e94   tomcat               "catalina.sh run"   7 minutes ago    Exited (143) 45 seconds ago             tomcat
+ffe074736f7a   ubuntu:latest        "/bin/bash"         55 minutes ago   Exited (0) 55 minutes ago               hopeful_vaughan
+cd15348a424b   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago                 cranky_chatterjee
+b7a3d836baae   hello-world          "/hello"            23 hours ago     Exited (0) 23 hours ago                 gallant_visvesvaraya
+b719a08f98c5   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago                 unruffled_booth
+6c5edb06e8aa   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago                 amazing_darwin
+
+[docker@docker-master abalia_docker_abril_2021]$ ps -ef|grep catali
+docker   20618 18983  0 16:21 pts/1    00:00:00 grep --color=auto catali
+
+[docker@docker-master abalia_docker_abril_2021]$ docker ps -a
+CONTAINER ID   IMAGE                COMMAND             CREATED          STATUS                            PORTS     NAMES
+f5b407266e94   tomcat               "catalina.sh run"   8 minutes ago    Exited (143) About a minute ago             tomcat
+ffe074736f7a   ubuntu:latest        "/bin/bash"         56 minutes ago   Exited (0) 56 minutes ago                   hopeful_vaughan
+cd15348a424b   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago                     cranky_chatterjee
+b7a3d836baae   hello-world          "/hello"            23 hours ago     Exited (0) 23 hours ago                     gallant_visvesvaraya
+b719a08f98c5   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago                     unruffled_booth
+6c5edb06e8aa   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago                     amazing_darwin
+
+
+5.2.5
+
+[docker@docker-master abalia_docker_abril_2021]$ docker start tomcat
+tomcat
+
+
+5.2.6 
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS                       PORTS      NAMES
+f5b407266e94   tomcat    "catalina.sh run"   12 minutes ago   Up About a minute (Paused)   8080/tcp   tomcat
+
+
+5.2.7
+
+[docker@docker-master abalia_docker_abril_2021]$ docker unpause tomcat
+tomcat
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS              PORTS      NAMES
+f5b407266e94   tomcat    "catalina.sh run"   13 minutes ago   Up About a minute   8080/tcp   tomcat
+
+
+
+5.2.8
+
+[docker@docker-master abalia_docker_abril_2021]$ docker restart tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS          PORTS      NAMES
+f5b407266e94   tomcat    "catalina.sh run"   14 minutes ago   Up 22 seconds   8080/tcp   tomcat
+
+
+5.2.9
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED             STATUS                         PORTS     NAMES
+f5b407266e94   tomcat               "catalina.sh run"   15 minutes ago      Exited (137) 10 seconds ago              tomcat
+ffe074736f7a   ubuntu:latest        "/bin/bash"         About an hour ago   Exited (0) About an hour ago             hopeful_vaughan
+cd15348a424b   hello-world:latest   "/hello"            23 hours ago        Exited (0) 23 hours ago                  cranky_chatterjee
+b7a3d836baae   hello-world          "/hello"            23 hours ago        Exited (0) 23 hours ago                  gallant_visvesvaraya
+b719a08f98c5   hello-world          "/hello"            24 hours ago        Exited (0) 24 hours ago                  unruffled_booth
+6c5edb06e8aa   hello-world          "/hello"            25 hours ago        Exited (0) 25 hours ago                  amazing_darwin
+
+
+5.2.10
+
+
+5.2.11
+
+[docker@docker-master abalia_docker_abril_2021]$ docker create tomcat
+aece49b73772b40c1130842bb4546ad279987b6cb72543ab24c8e9d1106d9836
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED             STATUS                         PORTS     NAMES
+aece49b73772   tomcat               "catalina.sh run"   11 seconds ago      Created                                  nice_pike
+ffe074736f7a   ubuntu:latest        "/bin/bash"         About an hour ago   Exited (0) About an hour ago             hopeful_vaughan
+cd15348a424b   hello-world:latest   "/hello"            23 hours ago        Exited (0) 23 hours ago                  cranky_chatterjee
+b7a3d836baae   hello-world          "/hello"            23 hours ago        Exited (0) 23 hours ago                  gallant_visvesvaraya
+b719a08f98c5   hello-world          "/hello"            24 hours ago        Exited (0) 24 hours ago                  unruffled_booth
+6c5edb06e8aa   hello-world          "/hello"            25 hours ago        Exited (0) 25 hours ago                  amazing_darwin
+
+
+5.2.12
+
+[docker@docker-master abalia_docker_abril_2021]$ docker run --name=tomcat -d --rm tomcat
+e23876f297367b75b6b4ecb0a61f6fd81a45de5c00bb92066e8b66522a5cbad2
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED              STATUS                         PORTS      NAMES
+e23876f29736   tomcat               "catalina.sh run"   4 seconds ago        Up 3 seconds                   8080/tcp   tomcat
+aece49b73772   tomcat               "catalina.sh run"   About a minute ago   Created                                   nice_pike
+ffe074736f7a   ubuntu:latest        "/bin/bash"         About an hour ago    Exited (0) About an hour ago              hopeful_vaughan
+cd15348a424b   hello-world:latest   "/hello"            23 hours ago         Exited (0) 23 hours ago                   cranky_chatterjee
+b7a3d836baae   hello-world          "/hello"            23 hours ago         Exited (0) 23 hours ago                   gallant_visvesvaraya
+b719a08f98c5   hello-world          "/hello"            25 hours ago         Exited (0) 25 hours ago                   unruffled_booth
+6c5edb06e8aa   hello-world          "/hello"            25 hours ago         Exited (0) 25 hours ago                   amazing_darwin
+
+
+5.2.13
+
+[docker@docker-master abalia_docker_abril_2021]$ docker rm -f tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED             STATUS                         PORTS     NAMES
+aece49b73772   tomcat               "catalina.sh run"   2 minutes ago       Created                                  nice_pike
+ffe074736f7a   ubuntu:latest        "/bin/bash"         About an hour ago   Exited (0) About an hour ago             hopeful_vaughan
+cd15348a424b   hello-world:latest   "/hello"            23 hours ago        Exited (0) 23 hours ago                  cranky_chatterjee
+b7a3d836baae   hello-world          "/hello"            23 hours ago        Exited (0) 23 hours ago                  gallant_visvesvaraya
+b719a08f98c5   hello-world          "/hello"            25 hours ago        Exited (0) 25 hours ago                  unruffled_booth
+6c5edb06e8aa   hello-world          "/hello"            25 hours ago        Exited (0) 25 hours ago                  amazing_darwin
+
+
+
+
