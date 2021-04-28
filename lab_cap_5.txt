@@ -1,0 +1,101 @@
+5.2.1
+docker run --name=tomcat -d tomcat
+Unable to find image 'tomcat:latest' locally
+latest: Pulling from library/tomcat
+bd8f6a7501cc: Pull complete 
+44718e6d535d: Pull complete 
+efe9738af0cb: Pull complete 
+f37aabde37b8: Pull complete 
+b87fc504233c: Pull complete 
+8bf93eef8c9e: Pull complete 
+8d33b4df10ef: Pull complete 
+2d77aa1a5442: Pull complete 
+baa04cc4071d: Pull complete 
+a3a752513415: Pull complete 
+Digest: sha256:0509684774ac53d8b152f4a50dd92889218a8633c0feddb4b35d092e55cd215d
+Status: Downloaded newer image for tomcat:latest
+4b2185eea0fc451cc10bdfdd6ff3214e2c98e0e39b158ef83fa1d7d38a58c615
+
+5.2.2
+docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED              STATUS              PORTS      NAMES
+4b2185eea0fc   tomcat    "catalina.sh run"   About a minute ago   Up About a minute   8080/tcp   tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker ps
+CONTAINER ID   IMAGE     COMMAND             CREATED              STATUS              PORTS      NAMES
+4b2185eea0fc   tomcat    "catalina.sh run"   About a minute ago   Up About a minute   8080/tcp   tomcat
+
+
+5.2.3
+docker stop tomcat
+tomcat
+
+
+5.2.4
+docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED         STATUS                        PORTS     NAMES
+4b2185eea0fc   tomcat               "catalina.sh run"   3 minutes ago   Exited (143) 46 seconds ago             tomcat
+2a1b434d5fd7   hello-world:latest   "/hello"            23 hours ago    Exited (0) 23 hours ago                 laughing_cartwright
+2e0b154e90c6   hello-world:latest   "/hello"            23 hours ago    Exited (0) 23 hours ago                 goofy_mahavira
+ffd978b9ec86   hello-world          "/hello"            24 hours ago    Exited (0) 24 hours ago                 youthful_elbakyan
+f12eec7299d9   hello-world          "/hello"            24 hours ago    Exited (0) 24 hours ago                 friendly_gagarin
+
+5.2.5
+docker start tomcat
+tomcat
+
+5.2.6
+docker pause tomcat
+tomcat
+
+5.2.7
+docker unpause tomcat
+tomcat
+
+5.2.8
+docker restart tomcat
+tomcat
+
+docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED         STATUS          PORTS      NAMES
+4b2185eea0fc   tomcat    "catalina.sh run"   6 minutes ago   Up 35 seconds   8080/tcp   tomcat
+
+
+5.2.9
+docker kill tomcat
+tomcat
+
+docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED         STATUS                        PORTS     NAMES
+4b2185eea0fc   tomcat               "catalina.sh run"   7 minutes ago   Exited (137) 14 seconds ago             tomcat
+2a1b434d5fd7   hello-world:latest   "/hello"            23 hours ago    Exited (0) 23 hours ago                 laughing_cartwright
+2e0b154e90c6   hello-world:latest   "/hello"            23 hours ago    Exited (0) 23 hours ago                 goofy_mahavira
+ffd978b9ec86   hello-world          "/hello"            24 hours ago    Exited (0) 24 hours ago                 youthful_elbakyan
+f12eec7299d9   hello-world          "/hello"            24 hours ago    Exited (0) 24 hours ago                 friendly_gagarin
+
+5.2.10
+docker rm tomcat
+tomcat
+
+5.2.11
+docker create tomcat
+57c0c2c4c8c0277ebca90c39e7f760d9980750d1224ac36ca925556186ff5d33
+
+docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED          STATUS                    PORTS     NAMES
+57c0c2c4c8c0   tomcat               "catalina.sh run"   19 seconds ago   Created                             unruffled_jennings
+2a1b434d5fd7   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago             laughing_cartwright
+2e0b154e90c6   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago             goofy_mahavira
+ffd978b9ec86   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago             youthful_elbakyan
+f12eec7299d9   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago             friendly_gagarin
+
+5.2.12
+docker run --name=tomcat -d --rm tomcat
+a74e8f5f6cd45884d1f128f1a773c49722b3b765fafaa814622b0fe9f683c75d
+
+
+5.2.14
+docker rm -f tomcat
+tomcat
+
+
+
