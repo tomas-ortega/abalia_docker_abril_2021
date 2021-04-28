@@ -1,0 +1,166 @@
+
+5.2.1
+
+[docker@docker-master abalia_docker_abril_2021]$ docker run --name=tomcat -d tomcat
+Unable to find image 'tomcat:latest' locally
+latest: Pulling from library/tomcat
+bd8f6a7501cc: Pull complete 
+44718e6d535d: Pull complete 
+efe9738af0cb: Pull complete 
+f37aabde37b8: Pull complete 
+b87fc504233c: Pull complete 
+8bf93eef8c9e: Pull complete 
+8d33b4df10ef: Pull complete 
+2d77aa1a5442: Pull complete 
+baa04cc4071d: Pull complete 
+a3a752513415: Pull complete 
+Digest: sha256:0509684774ac53d8b152f4a50dd92889218a8633c0feddb4b35d092e55cd215d
+Status: Downloaded newer image for tomcat:latest
+d0102192f2658f846d30c82f8df7406b8d55cee0a95e3a4fbd5bf1228dfb1f82
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+[docker@docker-master abalia_docker_abril_2021]$ docker run --name=tomcat2 -d tomcat
+8bb413e2f63d0139f3c455f3021608b6aaefc363ebdce2e5dc3d15415671aaec
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+
+5.2.2
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED         STATUS         PORTS      NAMES
+8bb413e2f63d   tomcat    "catalina.sh run"   2 minutes ago   Up 2 minutes   8080/tcp   tomcat2
+d0102192f265   tomcat    "catalina.sh run"   4 minutes ago   Up 4 minutes   8080/tcp   tomcat
+
+[docker@docker-master abalia_docker_abril_2021]$ docker ps
+CONTAINER ID   IMAGE     COMMAND             CREATED         STATUS         PORTS      NAMES
+8bb413e2f63d   tomcat    "catalina.sh run"   4 minutes ago   Up 4 minutes   8080/tcp   tomcat2
+d0102192f265   tomcat    "catalina.sh run"   6 minutes ago   Up 6 minutes   8080/tcp   tomcat
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+
+5.2.3
+
+[docker@docker-master abalia_docker_abril_2021]$ docker stop tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED         STATUS         PORTS      NAMES
+8bb413e2f63d   tomcat    "catalina.sh run"   6 minutes ago   Up 6 minutes   8080/tcp   tomcat2
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+5.2.4
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED          STATUS                            PORTS     NAMES
+8bb413e2f63d   tomcat               "catalina.sh run"   8 minutes ago    Exited (143) About a minute ago             tomcat2
+d0102192f265   tomcat               "catalina.sh run"   10 minutes ago   Exited (143) 2 minutes ago                  tomcat
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+5.2.5
+
+[docker@docker-master abalia_docker_abril_2021]$ docker start tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+5.2.6
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS                       PORTS      NAMES
+d0102192f265   tomcat    "catalina.sh run"   14 minutes ago   Up About a minute (Paused)   8080/tcp   tomcat
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+5.2.7
+
+[docker@docker-master abalia_docker_abril_2021]$ docker unpause tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS         PORTS      NAMES
+d0102192f265   tomcat    "catalina.sh run"   17 minutes ago   Up 4 minutes   8080/tcp   tomcat
+[docker@docker-master abalia_docker_abril_2021]$
+
+5.2.8
+
+[docker@docker-master abalia_docker_abril_2021]$ docker restart tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS          PORTS      NAMES
+d0102192f265   tomcat    "catalina.sh run"   18 minutes ago   Up 12 seconds   8080/tcp   tomcat
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+5.2.9
+
+docker@docker-master abalia_docker_abril_2021]$ docker kill tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED             STATUS                         PORTS     NAMES
+8bb413e2f63d   tomcat               "catalina.sh run"   17 minutes ago      Exited (143) 9 minutes ago               tomcat2
+d0102192f265   tomcat               "catalina.sh run"   19 minutes ago      Exited (137) 10 seconds ago              tomcat
+
+5.2.10
+
+[docker@docker-master abalia_docker_abril_2021]$ docker rm tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$
+
+5.2.11
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED             STATUS                         PORTS     NAMES
+9fc1e72f69c3   tomcat               "catalina.sh run"   30 seconds ago      Created                                  zen_cerf
+8bb413e2f63d   tomcat               "catalina.sh run"   19 minutes ago      Exited (143) 12 minutes ago              tomcat2
+
+5.2.12
+
+[docker@docker-master abalia_docker_abril_2021]$ docker run --name=tomcat -d --rm tomcat
+d00203281355592a0b4021b9f69bf1ad24b3eb1ea903946cec9148928cd81f43
+[docker@docker-master abalia_docker_abril_2021]$
+
+5.2.13
+
+[docker@docker-master abalia_docker_abril_2021]$ docker run --name=tomcat -d --rm tomcat
+d00203281355592a0b4021b9f69bf1ad24b3eb1ea903946cec9148928cd81f43
+[docker@docker-master abalia_docker_abril_2021]$ docker rm -f tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
