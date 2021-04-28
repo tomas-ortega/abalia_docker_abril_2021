@@ -1,0 +1,59 @@
+3.4.1. Descarga de imágenes
+
+[docker@docker-master abalia_docker_abril_2021]$ docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+Digest: sha256:cf31af331f38d1d7158470e095b132acd126a7180a54f263d386da88eb681d93
+Status: Image is up to date for ubuntu:latest
+docker.io/library/ubuntu:latest
+[docker@docker-master abalia_docker_abril_2021]$ ^C
+
+
+3.4.2
+
+[docker@docker-master abalia_docker_abril_2021]$ docker save ubuntu:latest | gzip > ubuntu_latest.tar.gz
+[docker@docker-master abalia_docker_abril_2021]$ sudo ls -lart
+total 26980
+drwxrwxr-x   7 docker docker      119 Apr 27 16:55 .git
+drwx------. 20 docker docker     4096 Apr 28 08:08 ..
+drwxrwxr-x   3 docker docker       46 Apr 28 08:39 .
+-rw-rw-r--   1 docker docker 27620347 Apr 28 08:39 ubuntu_latest.tar.gz
+[docker@docker-master abalia_docker_abril_2021]$ total 26980
+bash: total: command not found...
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+3.4.3
+
+[docker@docker-master abalia_docker_abril_2021]$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED       SIZE
+ubuntu        latest    7e0aa2d69a15   4 days ago    72.7MB
+hello-world   latest    d1165f221234   7 weeks ago   13.3kB
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+
+3.4.4
+
+docker@docker-master abalia_docker_abril_2021]$ docker rmi ubuntu:latest
+Error response from daemon: conflict: unable to remove repository reference "ubuntu:latest" (must force) - container ea7ca3652026 is using its referenced image 7e0aa2d69a15
+
+3.4.5
+
+ls -lrta
+total 26980
+drwxrwxr-x   7 docker docker      119 Apr 27 16:55 .git
+drwx------. 20 docker docker     4096 Apr 28 08:08 ..
+drwxrwxr-x   3 docker docker       46 Apr 28 08:39 .
+-rw-rw-r--   1 docker docker 27620347 Apr 28 08:39 ubuntu_latest.tar.gz
+[docker@docker-master abalia_docker_abril_2021]$ ^C
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+
+
+
+
+
+
+
+
+
+
