@@ -1,0 +1,136 @@
+5.2.1
+
+[docker@docker-master abalia_docker_abril_2021]$ docker run --name=tomcat -d tomcat
+Unable to find image 'tomcat:latest' locally
+latest: Pulling from library/tomcat
+bd8f6a7501cc: Pull complete 
+44718e6d535d: Pull complete 
+efe9738af0cb: Pull complete 
+f37aabde37b8: Pull complete 
+b87fc504233c: Pull complete 
+8bf93eef8c9e: Pull complete 
+8d33b4df10ef: Pull complete 
+2d77aa1a5442: Pull complete 
+baa04cc4071d: Pull complete 
+a3a752513415: Pull complete 
+Digest: sha256:0509684774ac53d8b152f4a50dd92889218a8633c0feddb4b35d092e55cd215d
+Status: Downloaded newer image for tomcat:latest
+38bf5266fcf4928bbc56965c32749384341210efcce565b9e1ef0d03336e45ef
+
+5.2.2
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED         STATUS         PORTS      NAMES
+38bf5266fcf4   tomcat    "catalina.sh run"   3 minutes ago   Up 3 minutes   8080/tcp   tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker ps
+CONTAINER ID   IMAGE     COMMAND             CREATED         STATUS         PORTS      NAMES
+38bf5266fcf4   tomcat    "catalina.sh run"   3 minutes ago   Up 3 minutes   8080/tcp   tomcat
+
+5.2.3
+
+[docker@docker-master abalia_docker_abril_2021]$ docker stop tomcat
+tomcat
+
+5.2.4
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED          STATUS                        PORTS     NAMES
+38bf5266fcf4   tomcat               "catalina.sh run"   4 minutes ago    Exited (143) 13 seconds ago             tomcat
+2d33c8cfdb28   ubuntu:latest        "/bin/bash"         45 minutes ago   Exited (0) 45 minutes ago               musing_mclaren
+ddba0027d3b3   ubuntu:latest        "/bin/bash"         47 minutes ago   Exited (0) 47 minutes ago               agitated_franklin
+18250ceb7496   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago                 condescending_cori
+59214fa84a06   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago                 hardcore_lehmann
+9fc18fc59d83   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago                 inspiring_leakey
+4494e494c408   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago                 nifty_cerf
+
+5.2.5
+
+[docker@docker-master abalia_docker_abril_2021]$ docker start tomcat
+tomcat
+
+5.2.6
+
+[docker@docker-master abalia_docker_abril_2021]$ docker pause tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED         STATUS                  PORTS      NAMES
+38bf5266fcf4   tomcat    "catalina.sh run"   9 minutes ago   Up 2 minutes (Paused)   8080/tcp   tomcat
+
+5.2.7
+
+[docker@docker-master abalia_docker_abril_2021]$ docker unpause tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS         PORTS      NAMES
+38bf5266fcf4   tomcat    "catalina.sh run"   10 minutes ago   Up 3 minutes   8080/tcp   tomcat
+
+5.2.8
+
+[docker@docker-master abalia_docker_abril_2021]$ docker restart tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS         PORTS      NAMES
+38bf5266fcf4   tomcat    "catalina.sh run"   11 minutes ago   Up 9 seconds   8080/tcp   tomcat
+
+5.2.9
+
+[docker@docker-master abalia_docker_abril_2021]$ docker kill tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED          STATUS                        PORTS     NAMES
+38bf5266fcf4   tomcat               "catalina.sh run"   13 minutes ago   Exited (137) 18 seconds ago             tomcat
+2d33c8cfdb28   ubuntu:latest        "/bin/bash"         53 minutes ago   Exited (0) 53 minutes ago               musing_mclaren
+ddba0027d3b3   ubuntu:latest        "/bin/bash"         55 minutes ago   Exited (0) 55 minutes ago               agitated_franklin
+18250ceb7496   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago                 condescending_cori
+59214fa84a06   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago                 hardcore_lehmann
+9fc18fc59d83   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago                 inspiring_leakey
+4494e494c408   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago                 nifty_cerf
+
+5.2.10
+
+[docker@docker-master abalia_docker_abril_2021]$ docker rm tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND       CREATED          STATUS                      PORTS     NAMES
+2d33c8cfdb28   ubuntu:latest        "/bin/bash"   55 minutes ago   Exited (0) 54 minutes ago             musing_mclaren
+ddba0027d3b3   ubuntu:latest        "/bin/bash"   57 minutes ago   Exited (0) 57 minutes ago             agitated_franklin
+18250ceb7496   hello-world:latest   "/hello"      23 hours ago     Exited (0) 23 hours ago               condescending_cori
+59214fa84a06   hello-world:latest   "/hello"      23 hours ago     Exited (0) 23 hours ago               hardcore_lehmann
+9fc18fc59d83   hello-world          "/hello"      24 hours ago     Exited (0) 24 hours ago               inspiring_leakey
+4494e494c408   hello-world          "/hello"      24 hours ago     Exited (0) 24 hours ago               nifty_cerf
+
+
+5.2.11
+
+[docker@docker-master abalia_docker_abril_2021]$ docker create tomcat
+22cea1b2a897c3681fb601d668c5e17b3ae097540e35c237367ea748545919f1
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED          STATUS                      PORTS     NAMES
+22cea1b2a897   tomcat               "catalina.sh run"   13 seconds ago   Created                               dazzling_matsumoto
+2d33c8cfdb28   ubuntu:latest        "/bin/bash"         56 minutes ago   Exited (0) 56 minutes ago             musing_mclaren
+ddba0027d3b3   ubuntu:latest        "/bin/bash"         58 minutes ago   Exited (0) 58 minutes ago             agitated_franklin
+18250ceb7496   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago               condescending_cori
+59214fa84a06   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago               hardcore_lehmann
+9fc18fc59d83   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago               inspiring_leakey
+4494e494c408   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago               nifty_cerf
+
+5.2.12
+
+[docker@docker-master abalia_docker_abril_2021]$ docker run --name=tomcat -d --rm tomcat
+aa0bbee3aa19978fa4b09760f1d3e77c55ca0bb8ac70957a1c7fbd7b2cd96867
+
+5.2.13
+
+[docker@docker-master abalia_docker_abril_2021]$ docker rm -f tomcat
+tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED             STATUS                         PORTS     NAMES
+22cea1b2a897   tomcat               "catalina.sh run"   2 minutes ago       Created                                  dazzling_matsumoto
+2d33c8cfdb28   ubuntu:latest        "/bin/bash"         58 minutes ago      Exited (0) 58 minutes ago                musing_mclaren
+ddba0027d3b3   ubuntu:latest        "/bin/bash"         About an hour ago   Exited (0) About an hour ago             agitated_franklin
+18250ceb7496   hello-world:latest   "/hello"            23 hours ago        Exited (0) 23 hours ago                  condescending_cori
+59214fa84a06   hello-world:latest   "/hello"            23 hours ago        Exited (0) 23 hours ago                  hardcore_lehmann
+9fc18fc59d83   hello-world          "/hello"            24 hours ago        Exited (0) 24 hours ago                  inspiring_leakey
+4494e494c408   hello-world          "/hello"            25 hours ago        Exited (0) 25 hours ago                  nifty_cerf
+
+
