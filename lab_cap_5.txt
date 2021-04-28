@@ -1,0 +1,199 @@
+5.2. Lab: Contenedores Docker
+
+5.2.1. Arrancar un contenedor (docker run)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker run --name=tomcat -d tomcat
+Unable to find image 'tomcat:latest' locally
+latest: Pulling from library/tomcat
+bd8f6a7501cc: Pull complete 
+44718e6d535d: Pull complete 
+efe9738af0cb: Pull complete 
+f37aabde37b8: Pull complete 
+b87fc504233c: Pull complete 
+8bf93eef8c9e: Pull complete 
+8d33b4df10ef: Pull complete 
+2d77aa1a5442: Pull complete 
+baa04cc4071d: Pull complete 
+a3a752513415: Pull complete 
+Digest: sha256:0509684774ac53d8b152f4a50dd92889218a8633c0feddb4b35d092e55cd215d
+Status: Downloaded newer image for tomcat:latest
+a02a93f5b0dde6f62be3f39d743415a35c159a152691ac1dcc11caa52117e6eb
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+
+
+5.2.2. Listando contenedores activos (docker container ls | docker ps)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED         STATUS              PORTS      NAMES
+a02a93f5b0dd   tomcat    "catalina.sh run"   2 minutes ago   Up About a minute   8080/tcp   tomcat
+
+
+[docker@docker-master abalia_docker_abril_2021]$ docker ps
+CONTAINER ID   IMAGE     COMMAND             CREATED         STATUS         PORTS      NAMES
+a02a93f5b0dd   tomcat    "catalina.sh run"   2 minutes ago   Up 2 minutes   8080/tcp   tomcat
+
+
+5.2.3. Parar un contenedor (docker stop)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker stop tomcat
+tomcat
+
+[docker@docker-master abalia_docker_abril_2021]$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[docker@docker-master abalia_docker_abril_2021]$ 
+
+
+5.2.4. Listando los contenedores detenidos (docker container ls -a | docker
+ps -a)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED         STATUS                            PORTS     NAMES
+a02a93f5b0dd   tomcat               "catalina.sh run"   8 minutes ago   Exited (143) About a minute ago             tomcat
+5bc793f07041   hello-world:latest   "/hello"            23 hours ago    Exited (0) 23 hours ago                     lucid_archimedes
+8c74ec2cb509   hello-world:latest   "/hello"            23 hours ago    Exited (0) 23 hours ago                     elated_perlman
+6479b880016c   hello-world          "/hello"            24 hours ago    Exited (0) 24 hours ago                     zen_kapitsa
+42b3bb8431eb   hello-world          "/hello"            24 hours ago    Exited (0) 24 hours ago                     upbeat_hodgkin
+
+
+[docker@docker-master abalia_docker_abril_2021]$ docker ps -a
+CONTAINER ID   IMAGE                COMMAND             CREATED         STATUS                       PORTS     NAMES
+a02a93f5b0dd   tomcat               "catalina.sh run"   9 minutes ago   Exited (143) 2 minutes ago             tomcat
+5bc793f07041   hello-world:latest   "/hello"            23 hours ago    Exited (0) 23 hours ago                lucid_archimedes
+8c74ec2cb509   hello-world:latest   "/hello"            23 hours ago    Exited (0) 23 hours ago                elated_perlman
+6479b880016c   hello-world          "/hello"            24 hours ago    Exited (0) 24 hours ago                zen_kapitsa
+42b3bb8431eb   hello-world          "/hello"            24 hours ago    Exited (0) 24 hours ago                upbeat_hodgkin
+
+
+
+5.2.5. Iniciando un contenedor detenido (docker start)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker start tomcat
+tomcat
+
+
+5.2.6. Pausando un contenedor (docker pause)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker pause tomcat
+tomcat
+
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS                       PORTS      NAMES
+a02a93f5b0dd   tomcat    "catalina.sh run"   11 minutes ago   Up About a minute (Paused)   8080/tcp   tomcat
+[docker@docker-master abalia_docker_abril_2021]$ docker container ps
+CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS                       PORTS      NAMES
+a02a93f5b0dd   tomcat    "catalina.sh run"   11 minutes ago   Up About a minute (Paused)   8080/tcp   tomcat
+
+
+5.2.7. Deshaciendo el pausado de un contenedor (docker unpause)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker unpause tomcat
+tomcat
+
+[docker@docker-master abalia_docker_abril_2021]$ 
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS         PORTS      NAMES
+a02a93f5b0dd   tomcat    "catalina.sh run"   12 minutes ago   Up 2 minutes   8080/tcp   tomcat
+
+
+5.2.8. Reiniciando un contenedor (docker restart)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker restart tomcat
+tomcat
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls
+CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS          PORTS      NAMES
+a02a93f5b0dd   tomcat    "catalina.sh run"   13 minutes ago   Up 15 seconds   8080/tcp   tomcat
+
+
+5.2.9. Detención forzada de un contenedor (docker kill)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker kill tomcat
+tomcat
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED          STATUS                        PORTS     NAMES
+a02a93f5b0dd   tomcat               "catalina.sh run"   14 minutes ago   Exited (137) 20 seconds ago             tomcat
+5bc793f07041   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago                 lucid_archimedes
+8c74ec2cb509   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago                 elated_perlman
+6479b880016c   hello-world          "/hello"            24 hours ago     Exited (0) 24 hours ago                 zen_kapitsa
+42b3bb8431eb   hello-world          "/hello"            25 hours ago     Exited (0) 25 hours ago                 upbeat_hodgkin
+
+
+5.2.10. Eliminando un contenedor (docker rm)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker rm tomcat
+tomcat
+
+
+5.2.11. Creando un contenedor sin ejecutarlo (docker create)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker create tomcat
+c9a4b70fc1a5bde81c3364a103889a4c160cf1836cff2eaddfb671aad0641519
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED          STATUS                    PORTS     NAMES
+c9a4b70fc1a5   tomcat               "catalina.sh run"   19 seconds ago   Created                             elated_khorana
+fcc826c34fad   tomcat               "catalina.sh run"   4 minutes ago    Created                             beautiful_pasteur
+5bc793f07041   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago             lucid_archimedes
+8c74ec2cb509   hello-world:latest   "/hello"            23 hours ago     Exited (0) 23 hours ago             elated_perlman
+6479b880016c   hello-world          "/hello"            25 hours ago     Exited (0) 25 hours ago             zen_kapitsa
+42b3bb8431eb   hello-world          "/hello"            25 hours ago     Exited (0) 25 hours ago             upbeat_hodgkin
+
+
+
+5.2.12. Auto borrado de contenedor al detenerse (directiva --rm)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker run --name=tomcat -d --rm tomcat
+54eb8a957f7ae53cd8321137a7efa77b247ca538cbe65c289e4b93ab732155f0
+
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED              STATUS                    PORTS      NAMES
+54eb8a957f7a   tomcat               "catalina.sh run"   18 seconds ago       Up 18 seconds             8080/tcp   tomcat
+c9a4b70fc1a5   tomcat               "catalina.sh run"   About a minute ago   Created                              elated_khorana
+fcc826c34fad   tomcat               "catalina.sh run"   5 minutes ago        Created                              beautiful_pasteur
+5bc793f07041   hello-world:latest   "/hello"            23 hours ago         Exited (0) 23 hours ago              lucid_archimedes
+8c74ec2cb509   hello-world:latest   "/hello"            23 hours ago         Exited (0) 23 hours ago              elated_perlman
+6479b880016c   hello-world          "/hello"            25 hours ago         Exited (0) 25 hours ago              zen_kapitsa
+42b3bb8431eb   hello-world          "/hello"            25 hours ago         Exited (0) 25 hours ago              upbeat_hodgkin
+
+
+
+5.2.13. Borrando un contenedor que se encuentra en operación (borrado
+forzado -f)
+
+[docker@docker-master abalia_docker_abril_2021]$ docker rm -f tomcat
+tomcat
+
+[docker@docker-master abalia_docker_abril_2021]$ docker container ls -a
+CONTAINER ID   IMAGE                COMMAND             CREATED         STATUS                    PORTS     NAMES
+c9a4b70fc1a5   tomcat               "catalina.sh run"   2 minutes ago   Created                             elated_khorana
+fcc826c34fad   tomcat               "catalina.sh run"   6 minutes ago   Created                             beautiful_pasteur
+5bc793f07041   hello-world:latest   "/hello"            23 hours ago    Exited (0) 23 hours ago             lucid_archimedes
+8c74ec2cb509   hello-world:latest   "/hello"            23 hours ago    Exited (0) 23 hours ago             elated_perlman
+6479b880016c   hello-world          "/hello"            25 hours ago    Exited (0) 25 hours ago             zen_kapitsa
+42b3bb8431eb   hello-world          "/hello"            25 hours ago    Exited (0) 25 hours ago             upbeat_hodgkin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
